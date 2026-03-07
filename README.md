@@ -1,4 +1,4 @@
-# Oracle DBA Portfolio
+# Oracle DB Portfolio
 DBA/DBE로서의 역량을 키우기 위한 실무 중심의 실습 포트폴리오입니다.
 기동 단계별 동작 원리부터 스토리지 구조 관리, 네트워크 구성 및 DB 수동 생성까지 단계별로 실습한 스크립트와 과정을 기록했습니다.
 <br/>
