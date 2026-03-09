@@ -1,16 +1,21 @@
-# Oracle DB Portfolio
-DBA/DBE로서의 역량을 키우기 위한 실무 중심의 실습 포트폴리오입니다.
-기동 단계별 동작 원리부터 스토리지 구조 관리, 네트워크 구성 및 DB 수동 생성, 사용자 보안 관리까지 단계별로 실습한 스크립트와 과정을 기록했습니다.
+# Oracle DBA Portfolio
+
+Oracle DB 인스턴스 기동 원리부터 스토리지 관리, 수동 DB 생성, 네트워크 구성,
+사용자 보안 관리, Lock & Undo & 감사(Audit)까지 CLI 환경에서 직접 실습한 포트폴리오입니다.
+이후 성능 모니터링, 백업/복구, SQL 튜닝, RAC 및 Data Guard를 활용한 고가용성(HA) 구성까지 확장 예정입니다.
+
 <br/>
 
 ## Tech Stack
 - **RDBMS:** Oracle Database 19c
 - **OS:** Oracle Linux 7.9 (VMware Virtual Machine)
-- **Languages:** SQL, Shell Script
+- **Languages:** SQL, PL/SQL, Shell Script
 - **Tools:** SQL*Plus, MobaXterm(SSH)
+
 <br/>
 
 ## 학습 및 실습 주제
+
 (./01_Admin)
 - SQL*Plus 로컬/클라이언트 접속 방식 비교
 - Alert Log 실시간 모니터링
@@ -38,6 +43,16 @@ DBA/DBE로서의 역량을 키우기 위한 실무 중심의 실습 포트폴리
 - 롤(Role) 생성 및 권한 묶음 관리 (롤 중첩, 활성화 규칙)
 - 프로파일(Profile) 생성 및 비밀번호 정책 적용 (잠금 횟수, 만료, 재사용 제한)
 - 쿼타(Quota) 설정 및 테이블스페이스 사용 한도 관리
+- Lock 구조 이해 및 블로킹 세션 조회 & Kill Session 실습
+- Deadlock 재현 및 오라클 자동 해제 확인
+- Undo Data 개념 (Active / Unexpired / Expired 상태)
+- Retention Guarantee 설정 및 Undo 테이블스페이스 추가/전환
+- Standard Audit (AUDIT / NOAUDIT 명령, DBA_AUDIT_TRAIL 조회)
+- Value-Based Auditing (트리거 기반, 변경 전/후 값 기록)
+- Fine-Grained Auditing — FGA (DBMS_FGA 패키지, 조건부 감사)
+- SYSDBA Auditing (audit_sys_operations, OS 파일 별도 기록)
+- AUD$ / FGA_LOG$ 감사 전용 테이블스페이스 이동 (DBMS_AUDIT_MGMT)
+
 <br/>
 
 ## 🔗 Links
@@ -46,4 +61,5 @@ DBA/DBE로서의 역량을 키우기 위한 실무 중심의 실습 포트폴리
   - [Admin 실습 02: 테이블스페이스](https://nsylove97.tistory.com/14)
   - [Admin 실습 03: DB 수동 생성 & 네트워크 구성, DB 링크](https://nsylove97.tistory.com/32)
   - [Admin 실습 04: 사용자 관리 & 권한 / 롤 / 프로파일](https://nsylove97.tistory.com/33)
+  - [Admin 실습 05: Lock & Undo & 감사(Audit)](https://nsylove97.tistory.com/34)
 - 📧 **Email:** nsylove97@gmail.com
