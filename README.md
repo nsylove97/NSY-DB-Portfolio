@@ -1,6 +1,6 @@
 # Oracle DB Portfolio
 DBA/DBE로서의 역량을 키우기 위한 실무 중심의 실습 포트폴리오입니다.
-기동 단계별 동작 원리부터 스토리지 구조 관리, 네트워크 구성 및 DB 수동 생성까지 단계별로 실습한 스크립트와 과정을 기록했습니다.
+기동 단계별 동작 원리부터 스토리지 구조 관리, 네트워크 구성 및 DB 수동 생성, 사용자 보안 관리까지 단계별로 실습한 스크립트와 과정을 기록했습니다.
 <br/>
 
 ## Tech Stack
@@ -11,7 +11,6 @@ DBA/DBE로서의 역량을 키우기 위한 실무 중심의 실습 포트폴리
 <br/>
 
 ## 학습 및 실습 주제
-
 (./01_Admin)
 - SQL*Plus 로컬/클라이언트 접속 방식 비교
 - Alert Log 실시간 모니터링
@@ -31,6 +30,14 @@ DBA/DBE로서의 역량을 키우기 위한 실무 중심의 실습 포트폴리
 - Easy Connect vs Local Naming 비교 실습
 - Database Link 생성 및 원격 테이블 조회
 - Synonym을 활용한 원격 객체 접근 단순화
+- Predefined 계정 구조 및 Administrator Authentication (OS 인증 / 패스워드 파일 인증)
+- External Authentication (OPS$ 방식, OS 계정으로 DB 접속)
+- 계정 잠금 해제 및 비밀번호 초기화 (LOCKED / EXPIRED & LOCKED 상태 처리)
+- 시스템 권한 부여/회수 및 ADMIN OPTION (연쇄 회수 없음)
+- 오브젝트 권한 부여/회수 및 GRANT OPTION (연쇄 회수 발생)
+- 롤(Role) 생성 및 권한 묶음 관리 (롤 중첩, 활성화 규칙)
+- 프로파일(Profile) 생성 및 비밀번호 정책 적용 (잠금 횟수, 만료, 재사용 제한)
+- 쿼타(Quota) 설정 및 테이블스페이스 사용 한도 관리
 <br/>
 
 ## 🔗 Links
@@ -38,4 +45,5 @@ DBA/DBE로서의 역량을 키우기 위한 실무 중심의 실습 포트폴리
   - [Admin 실습 01: 인스턴스 기동 & 파라미터 파일](https://nsylove97.tistory.com/13)
   - [Admin 실습 02: 테이블스페이스](https://nsylove97.tistory.com/14)
   - [Admin 실습 03: DB 수동 생성 & 네트워크 구성, DB 링크](https://nsylove97.tistory.com/32)
+  - [Admin 실습 04: 사용자 관리 & 권한 / 롤 / 프로파일](https://nsylove97.tistory.com/33)
 - 📧 **Email:** nsylove97@gmail.com
