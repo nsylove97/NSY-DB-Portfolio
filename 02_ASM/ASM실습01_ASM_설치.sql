@@ -774,7 +774,7 @@
    7. 추가한 11개 디스크 각각 [Advanced...] 클릭
       → Virtual device node: SCSI 1:0 ~ SCSI 1:10 순서대로 변경
 
-   8. VM2 폴더의 oelsvr2.vmx 파일을 메모장으로 열고 맨 아래에 아래 두 줄 확인(없으면 추가)
+   8. VM2 폴더의 oelsvr2.vmx 파일을 메모장으로 열고 아래 두 줄 확인(없으면 추가)
       disk.locking = "FALSE"
       disk.EnableUUID = "TRUE"
       → 저장 후 닫기
@@ -800,7 +800,7 @@
       - 복제된 11개의 10GB 디스크가 보임 → 이번에는 제거하지 않고 그대로 둠
       - 각 디스크가 SCSI 1:0 ~ SCSI 1:10으로 배치되어 있는지 확인만 진행
 
-   6. VM3 폴더의 oel-standby.vmx 파일을 메모장으로 열고 맨 아래에 아래 두 줄 확인(없으면 추가)
+   6. VM3 폴더의 oel-standby.vmx 파일을 메모장으로 열고 아래 두 줄 확인(없으면 추가)
       disk.locking = "FALSE"
       disk.EnableUUID = "TRUE"
       → 저장 후 닫기
