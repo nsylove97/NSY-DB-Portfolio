@@ -3,7 +3,7 @@
  Admin 실습 04: 사용자 관리 & 권한 / 롤 / 프로파일
 ================================================================================
  블로그: https://nsylove97.tistory.com/33
- GitHub: https://github.com/nsylove97/Seongryeol-OracleDB-Portfolio
+ GitHub: https://github.com/nsylove97/NSY-DB-Portfolio
 
  실습 환경
    - OS  : Oracle Linux 7.9 (VMware Virtual Machine)

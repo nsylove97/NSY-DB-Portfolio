@@ -3,7 +3,7 @@
  ASM 실습 02: 인스턴스 구조 & 동적 성능 뷰
 ================================================================================
  블로그: https://nsylove97.tistory.com/40
- GitHub: https://github.com/nsylove97/Seongryeol-OracleDB-Portfolio
+ GitHub: https://github.com/nsylove97/NSY-DB-Portfolio
 
  실습 환경
    - OS            : Oracle Linux 7.9 (VMware Virtual Machine)

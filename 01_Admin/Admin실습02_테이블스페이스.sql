@@ -3,7 +3,7 @@
  Admin 실습 02: 테이블스페이스
 ================================================================================
  블로그: https://nsylove97.tistory.com/14
- GitHub: https://github.com/nsylove97/Seongryeol-OracleDB-Portfolio
+ GitHub: https://github.com/nsylove97/NSY-DB-Portfolio
 
  실습 환경
    - OS  : Oracle Linux 7.9 (VMware Virtual Machine)

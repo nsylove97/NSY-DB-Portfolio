@@ -3,7 +3,7 @@
  ASM 실습 01: ASM 설치 (RAC·DG 대비 포함)
 ================================================================================
  블로그: https://nsylove97.tistory.com/39
- GitHub: https://github.com/nsylove97/Seongryeol-OracleDB-Portfolio
+ GitHub: https://github.com/nsylove97/NSY-DB-Portfolio
 
  실습 환경
    - OS  : Oracle Linux 7.9 (VMware Virtual Machine)

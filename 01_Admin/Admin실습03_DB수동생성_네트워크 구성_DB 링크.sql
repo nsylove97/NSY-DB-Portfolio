@@ -3,8 +3,7 @@
  Admin 실습 03: DB 수동 생성 & 네트워크 구성, DB 링크
 ================================================================================
  블로그: https://nsylove97.tistory.com/32
- GitHub: https://github.com/nsylove97/Seongryeol-OracleDB-Portfolio
-
+ GitHub: https://github.com/nsylove97/NSY-DB-Portfolio
  실습 환경
    - OS  : Oracle Linux 7.9 (VMware Virtual Machine)
    - DB  : Oracle Database 19c

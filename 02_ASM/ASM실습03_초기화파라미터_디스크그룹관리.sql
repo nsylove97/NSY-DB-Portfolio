@@ -3,7 +3,7 @@
  ASM 실습 03: 초기화 파라미터 & 디스크 그룹 관리
 ================================================================================
  블로그: https://nsylove97.tistory.com/41
- GitHub: https://github.com/nsylove97/Seongryeol-OracleDB-Portfolio
+ GitHub: https://github.com/nsylove97/NSY-DB-Portfolio
 
  실습 환경
    - OS            : Oracle Linux 7.9 (VMware Virtual Machine)

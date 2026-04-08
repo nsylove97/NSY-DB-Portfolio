@@ -1,4 +1,4 @@
-# Oracle DB Portfolio
+# NSY DB Portfolio
 
 Oracle DB 인스턴스 기동 원리부터 스토리지 관리, 수동 DB 생성, 네트워크 구성,
 사용자 보안 관리, Lock & Undo & 감사(Audit), 성능 모니터링(AWR),

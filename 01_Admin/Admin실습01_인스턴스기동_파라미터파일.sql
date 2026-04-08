@@ -1,7 +1,7 @@
 /*
  Admin 실습 01: 인스턴스 기동 & 파라미터 파일
  블로그: https://nsylove97.tistory.com/13
- GitHub: https://github.com/nsylove97/Seongryeol-OracleDB-Portfolio
+ GitHub: https://github.com/nsylove97/NSY-DB-Portfolio
 
  실습 환경
    - OS  : Oracle Linux 7.9 (VMware Virtual Machine)

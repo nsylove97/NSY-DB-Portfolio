@@ -3,7 +3,7 @@
  Admin 실습 05: Lock & Undo & 감사(Audit)
 ================================================================================
  블로그: https://nsylove97.tistory.com/34
- GitHub: https://github.com/nsylove97/Seongryeol-OracleDB-Portfolio
+ GitHub: https://github.com/nsylove97/NSY-DB-Portfolio
 
  실습 환경
    - OS  : Oracle Linux 7.9 (VMware Virtual Machine)
