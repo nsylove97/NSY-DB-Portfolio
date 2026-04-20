@@ -333,7 +333,7 @@ FROM   v$database;
    [결과]
    Performing switchover NOW, please wait...
    ...
-   Switchover processing complete.
+   Switchover succeeded ..
 */
 
 
@@ -430,7 +430,6 @@ SHUTDOWN ABORT;
    [결과]
    Performing failover NOW, please wait...
    Failover succeeded, new primary is "orclstby"
-   DGMGRL>
 */
 
 
