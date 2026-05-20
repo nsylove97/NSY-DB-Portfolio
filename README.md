@@ -252,6 +252,31 @@ ASM(Automatic Storage Management) 설치 및 인스턴스 구조까지 CLI 환�
 
 <br/>
 
+(./04_RAC)
+
+**RAC 실습 01: 개념 & 아키텍처 — Cluster · GCS/GES · Cache Fusion**
+- RAC 개념 — Active-Active 구성, 단일 인스턴스 vs RAC 비교
+- RAC 네트워크 구성 — Public · Private (Interconnect) · VIP · SCAN 역할 및 구조
+- 공유 스토리지 구성 — ASM 기반 멀티 인스턴스 동시 접근 원리
+- Clusterware 구성 요소 — OCR(Oracle Cluster Registry) · Voting Disk 역할 및 배치
+- 전역 자원 관리 — GRD(Global Resource Directory) · GCS(Global Cache Service) · GES(Global Enqueue Service)
+- Cache Fusion — 노드 간 블록 전송 흐름, 디스크 I/O 없이 메모리 직접 전달
+- RAC 전용 백그라운드 프로세스 — LMS / LMD / LMON / LCK0 역할
+- 메모리 요구사항 — RAC 추가 SGA 구성 요소
+
+**RAC 실습 02: 2 Node RAC 구축 — VM 환경 준비 & Grid 설치**
+- 사전 준비 — VM1 스냅샷 복구, VM2 Clone 활용, VM3 종료 유지
+- VM1 · VM2 호스트명 / IP 설정 확인 — hostnamectl / ifcfg-ens33
+- /etc/hosts 동기화 — Public · VIP · Private · SCAN 양 노드 완전 일치
+- Private Interconnect (ens34, Host-only) 활성화 및 양 노드 ping 검증
+- VMX 설정 확인
+- ASM 공유 디스크 확인 — VM2에서 oracleasm scandisks / listdisks
+- gridSetup.sh (Cluster 모드) — SCAN · Private NIC · +OCR 디스크 그룹 설정
+- root.sh / rootcrs.sh — VM1 완료 후 VM2 순서 실행
+- 클러스터 리소스 상태 확인 — crsctl stat res -t, Voting Disk · OCR 배치 확인
+- RAC DB 생성 — dbca (Oracle Real Application Clusters database 선택, +DATA / +FRA)
+- 설치 결과 확인 — gv$instance 양 노드 OPEN · srvctl status database/asm/listener/scan_listener
+
 ## 🔗 Links
 - 📝 **기술 블로그:** https://nsylove97.tistory.com/
   - [Admin 실습 01: 인스턴스 기동 & 파라미터 파일](https://nsylove97.tistory.com/13)
@@ -272,4 +297,7 @@ ASM(Automatic Storage Management) 설치 및 인스턴스 구조까지 CLI 환�
   - [Data Guard 06: Fast-Start Failover(FSFO) & Snapshot Standby](https://nsylove97.tistory.com/51)
   - [Data Guard 07: 운영 진단 & Active Data Guard & Logical Standby](https://nsylove97.tistory.com/52)
   - [Data Guard 08: 심화 주제 정리편](https://nsylove97.tistory.com/53)
+  - [RAC 실습 01: 개념 & 아키텍처 — Cluster · GCS/GES · Cache Fusion](https://nsylove97.tistory.com/54)
+  - [RAC 실습 02: 2 Node RAC 구축 — VM 환경 준비 & Grid 설치](https://nsylove97.tistory.com/55)
+
 - 📧 **Email:** nsylove97@gmail.com
