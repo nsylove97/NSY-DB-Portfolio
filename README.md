@@ -2,9 +2,11 @@
 
 오라클 DB 인스턴스 기동 원리부터 스토리지 관리, 수동 DB 생성, 네트워크 구성,
 사용자 보안 관리, Lock & Undo & 감사(Audit), 성능 모니터링(AWR),
-ASM(Automatic Storage Management) 설치 및 인스턴스 구조까지 CLI 환경에서 직접 실습한 포트폴리오입니다.
-현재 데이터 가드를 활용한 고가용성(HA) / 재해 복구(DR) 구성을 완료했습니다.
-이후 RAC 구성, RMAN 백업·복구, SQL 튜닝까지 확장 예정입니다.
+ASM 설치 및 인스턴스 구조까지 CLI 환경에서 직접 실습한 포트폴리오입니다.
+현재 데이터 가드를 활용한 고가용성(HA) / 재해 복구(DR) 구성을 완료했으며,
+RAC는 아키텍처부터 2 Node 구축을 완료하고 Clusterware 관리, RMAN 백업,
+서비스 분산 설계, Cache Fusion 기반 성능 튜닝까지 단계별로 정리해 나가고 있습니다.
+현재 Backup & Recovery 실습을 함께 진행 중이며, 이후 SQL 튜닝까지 확장 예정입니다.
 
 <br/>
 
@@ -277,6 +279,16 @@ ASM(Automatic Storage Management) 설치 및 인스턴스 구조까지 CLI 환�
 - RAC DB 생성 — dbca (Oracle Real Application Clusters database 선택, +DATA / +FRA)
 - 설치 결과 확인 — gv$instance 양 노드 OPEN · srvctl status database/asm/listener/scan_listener
 
+(./05_BNR)
+
+**BNR 실습 01: DB 구조 이해 및 아카이브 로그 환경 구성**
+- Oracle DB 파일 구조 개요 — Datafile / Controlfile / Redo Log File / Archived Log 역할
+- NOARCHIVELOG vs ARCHIVELOG 모드 차이 및 선택 기준
+- archive log list / v$database 조회로 현재 로그 모드 확인
+- log_archive_dest_1/2 이중화 경로 설정 및 log_archive_format 파일명 규칙 지정
+- ARCHIVELOG 모드 전환 절차 — shutdown → MOUNT → ALTER DATABASE ARCHIVELOG → OPEN
+- 백업 디렉토리 구성 전략 — noarch / open_bkp / close_bkp 분리
+
 ## 🔗 Links
 - 📝 **기술 블로그:** https://nsylove97.tistory.com/
   - [Admin 실습 01: 인스턴스 기동 & 파라미터 파일](https://nsylove97.tistory.com/13)
@@ -299,5 +311,6 @@ ASM(Automatic Storage Management) 설치 및 인스턴스 구조까지 CLI 환�
   - [Data Guard 08: 심화 주제 정리편](https://nsylove97.tistory.com/53)
   - [RAC 실습 01: 개념 & 아키텍처 — Cluster · GCS/GES · Cache Fusion](https://nsylove97.tistory.com/54)
   - [RAC 실습 02: 2 Node RAC 구축 — VM 환경 준비 & Grid 설치](https://nsylove97.tistory.com/55)
+  - [BNR 실습 01: DB 구조 이해 및 아카이브 로그 환경 구성](https://nsylove97.tistory.com/57)
 
 - 📧 **Email:** nsylove97@gmail.com
