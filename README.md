@@ -288,6 +288,15 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
 - ARCHIVELOG 모드 전환 절차 — shutdown → MOUNT → ALTER DATABASE ARCHIVELOG → OPEN
 - 백업 디렉토리 구성 전략 — noarch / open_bkp / close_bkp 분리
 
+**BNR 실습 02: 노아카이브모드 Cold Backup & 복구 시나리오**
+- Consistent Backup(Cold Backup) 개념 및 수행 조건
+- v$datafile / v$controlfile / v$logfile 조회로 백업 대상 파일 확인
+- checkpoint_change# (SCN) 개념 및 scn_to_timestamp 변환
+- 컨트롤 파일 단일화 — control_files 파라미터 scope=spfile 수정
+- shutdown immediate → cp -v 전체 백업 수행
+- 시나리오 1 — 데이터파일 손상 후 Cold Backup 복원 & 아카이브 로그 적용 완전 복구
+- 시나리오 2 — 아카이브 로그 없는 데이터파일 손상 → RESETLOGS 불완전 복구
+
 ## 🔗 Links
 - 📝 **기술 블로그:** https://nsylove97.tistory.com/
   - [Admin 실습 01: 인스턴스 기동 & 파라미터 파일](https://nsylove97.tistory.com/13)
@@ -311,5 +320,6 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
   - [RAC 실습 01: 개념 & 아키텍처 — Cluster · GCS/GES · Cache Fusion](https://nsylove97.tistory.com/54)
   - [RAC 실습 02: 2 Node RAC 구축 — VM 환경 준비 & Grid 설치](https://nsylove97.tistory.com/55)
   - [BNR 실습 01: DB 구조 이해 및 아카이브 로그 환경 구성](https://nsylove97.tistory.com/57)
+  - [BNR 실습 02: 노아카이브모드 Cold Backup & 복구 시나리오](https://nsylove97.tistory.com/58)
 
 - 📧 **Email:** nsylove97@gmail.com
