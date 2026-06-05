@@ -297,6 +297,16 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
 - 시나리오 1 — 데이터파일 손상 후 Cold Backup 복원 & 아카이브 로그 적용 완전 복구
 - 시나리오 2 — 아카이브 로그 없는 데이터파일 손상 → RESETLOGS 불완전 복구
 
+**BNR 실습 03: 노아카이브 모드에서 백업 없는 TS, System/Undo 데이터파일 손상 복구 시나리오 (3~8)**
+- 시나리오 3 — 백업 없는 데이터파일 손상 (Redo O) → ALTER DATABASE CREATE DATAFILE + RECOVER DATAFILE + ONLINE
+- 시나리오 4 — 백업 없는 데이터파일 손상 (Redo X) → CREATE DATAFILE 후 복구 실패 → 재시작 후 DROP TABLESPACE
+- SYSTEM / UNDO / TEMP 데이터파일 offline 변경 불가 특성 및 MOUNT 상태 복구 원칙
+- 시나리오 5 — SYSTEM 데이터파일 손상 (Redo O) → MOUNT에서 RECOVER TABLESPACE system → OPEN
+- 시나리오 6 — SYSTEM 데이터파일 손상 (Redo X) → 복구 실패 → 전체 Cold Backup 복원 (불완전 복구)
+- 시나리오 7 — UNDO 데이터파일 손상 (Redo O) → MOUNT에서 RECOVER DATAFILE 4 → OPEN
+- 시나리오 8 — UNDO 데이터파일 손상 (Redo X) → OFFLINE DROP → OPEN → 새 Undo TS 생성 → undo_tablespace 전환 → 구 Undo TS DROP
+- _corrupted_rollback_segments 히든 파라미터로 NEEDS RECOVERY 세그먼트 강제 offline 처리
+
 ## 🔗 Links
 - 📝 **기술 블로그:** https://nsylove97.tistory.com/
   - [Admin 실습 01: 인스턴스 기동 & 파라미터 파일](https://nsylove97.tistory.com/13)
@@ -321,5 +331,6 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
   - [RAC 실습 02: 2 Node RAC 구축 — VM 환경 준비 & Grid 설치](https://nsylove97.tistory.com/55)
   - [BNR 실습 01: DB 구조 이해 및 아카이브 로그 환경 구성](https://nsylove97.tistory.com/57)
   - [BNR 실습 02: 노아카이브모드 Cold Backup & 복구 시나리오](https://nsylove97.tistory.com/58)
+  - [BNR 실습 03: 노아카이브 모드에서 백업 없는 TS, System/Undo 데이터파일 손상 복구 시나리오 (3~8)](https://nsylove97.tistory.com/59)
 
 - 📧 **Email:** nsylove97@gmail.com
