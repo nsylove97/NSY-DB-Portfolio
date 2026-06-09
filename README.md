@@ -313,6 +313,17 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
 - 시나리오 10 — Temp 파일 손상 → ALTER TABLESPACE temp ADD TEMPFILE → 손상 파일 DROP / 정상 종료 시 자동 재생성 특성
 - 시나리오 11 — 모든 데이터파일·컨트롤파일·리두로그파일 디스크 전체 손상 → 새 경로에 Cold Backup 복원 → pfile control_files 경로 수정 → STARTUP PFILE= MOUNT → ALTER DATABASE RENAME FILE로 전체 파일 경로 재지정 → OPEN
 
+**BNR 실습 05: 노아카이브 모드에서 Redo 없는 복구 & 컨트롤 파일 손상 복구 시나리오 (12~17)**
+- 시나리오 12 — 백업에 Redo Log 없음 → RECOVER UNTIL CANCEL USING BACKUP CONTROLFILE → RESETLOGS 불완전 복구
+- 시나리오 13 — 컨트롤 파일 손상 (Binary 복원) → backup controlfile 복원 → RECOVER USING BACKUP CONTROLFILE → RESETLOGS
+- 시나리오 14 — 컨트롤 파일 손상 (Trace 재생성, 비정상 종료) → CREATE CONTROLFILE REUSE … NORESETLOGS → RECOVER DATABASE → 정상 OPEN
+- 시나리오 15 — 컨트롤 파일 손상 (Trace 재생성, 정상 종료) → CREATE CONTROLFILE REUSE … NORESETLOGS → RECOVER 없이 정상 OPEN
+- 시나리오 16 — 컨트롤 파일 손상 (Trace 재생성, 비정상 종료) → CREATE CONTROLFILE REUSE … NORESETLOGS → RECOVER DATABASE → Redo 수동 지정 → 정상 OPEN
+- 시나리오 17 — 데이터파일 + 컨트롤 파일 동시 손상 (Redo O) → 전체 복원 → RECOVER USING BACKUP CONTROLFILE → RESETLOGS
+- ALTER DATABASE BACKUP CONTROLFILE TO TRACE 로 trace 파일 생성 및 CREATE CONTROLFILE 재작성
+- RESETLOGS 이후 즉시 Whole Database Backup 수행 원칙
+- 복구 후 TEMP 파일 재연결 — ALTER TABLESPACE TEMP ADD TEMPFILE … REUSE
+
 ## 🔗 Links
 - 📝 **기술 블로그:** https://nsylove97.tistory.com/
   - [Admin 실습 01: 인스턴스 기동 & 파라미터 파일](https://nsylove97.tistory.com/13)
@@ -339,5 +350,6 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
   - [BNR 실습 02: 노아카이브모드 Cold Backup & 복구 시나리오](https://nsylove97.tistory.com/58)
   - [BNR 실습 03: 노아카이브 모드에서 백업 없는 TS, System/Undo 데이터파일 손상 복구 시나리오 (3~8)](https://nsylove97.tistory.com/59)
   - [BNR 실습 04: 노아카이브 모드에서 TX 중 Undo 손상, Temp 파일 손상, 전체 디스크 손상 복구 (9~11)](https://nsylove97.tistory.com/60)
+  - [BNR 실습 05: 노아카이브 모드에서 Redo 없는 복구 & 컨트롤 파일 손상 복구 시나리오 (12~17)](https://nsylove97.tistory.com/61)
 
 - 📧 **Email:** nsylove97@gmail.com
