@@ -324,6 +324,17 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
 - RESETLOGS 이후 즉시 Whole Database Backup 수행 원칙
 - 복구 후 TEMP 파일 재연결 — ALTER TABLESPACE TEMP ADD TEMPFILE … REUSE
 
+**BNR 실습 06: 노아카이브 모드에서 컨트롤 파일·리두 로그 파일 손상 복구 시나리오 (18~24)**
+- v$log / v$logfile 조회로 그룹별 STATUS(CURRENT/ACTIVE/INACTIVE) 및 ARCHIVED 여부 확인
+- 시나리오 18 — 컨트롤 파일·데이터파일 전체 유실 (Redo X, 비정상 종료) → Cold Backup 복원 → RECOVER DATABASE UNTIL CANCEL USING BACKUP CONTROLFILE → RESETLOGS 불완전 복구
+- 시나리오 19 — 정상 종료 후 컨트롤 파일·리두 로그 파일 전체 유실 → CREATE CONTROLFILE REUSE … RESETLOGS NOARCHIVELOG → OPEN RESETLOGS → TEMP 파일 재연결
+- 시나리오 20 — 리두 로그 파일·컨트롤 파일 손상 + 비정상 종료 → Cold Backup 복원 → RECOVER DATABASE UNTIL CANCEL USING BACKUP CONTROLFILE → RESETLOGS
+- 시나리오 21 — 백업 컨트롤 파일과 현재 데이터파일 정보 불일치 (신규 테이블스페이스 추가 후 컨트롤 파일 손상) → CREATE CONTROLFILE REUSE … NORESETLOGS → UNNAMED 데이터파일 수동 지정 → OPEN → 추가 테이블스페이스 DROP
+- 시나리오 22 — 정상 종료 후 INACTIVE redo log file 삭제 → 재기동 시 CURRENT 전환 → ALTER DATABASE CLEAR LOGFILE GROUP → OPEN → (로그 그룹 DROP/ADD로 재구성, 선택사항)
+- 시나리오 23 — INACTIVE 로그파일 삭제 후 DB 비정상 종료 → ALTER DATABASE CLEAR LOGFILE GROUP → OPEN
+- 시나리오 24 — CURRENT redo log file 삭제 → ORA-01624로 즉시 CLEAR 불가 → shutdown/startup으로 로그 그룹 전환 후 ALTER DATABASE CLEAR LOGFILE GROUP → OPEN
+- ALTER DATABASE CLEAR LOGFILE GROUP — 로그 파일 재생성, RESETLOGS 없이 정상 OPEN 가능 (단, 손상 로그가 CURRENT/NEEDED인 경우 제한)
+
 ## 🔗 Links
 - 📝 **기술 블로그:** https://nsylove97.tistory.com/
   - [Admin 실습 01: 인스턴스 기동 & 파라미터 파일](https://nsylove97.tistory.com/13)
@@ -351,5 +362,6 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
   - [BNR 실습 03: 노아카이브 모드에서 백업 없는 TS, System/Undo 데이터파일 손상 복구 시나리오 (3~8)](https://nsylove97.tistory.com/59)
   - [BNR 실습 04: 노아카이브 모드에서 TX 중 Undo 손상, Temp 파일 손상, 전체 디스크 손상 복구 (9~11)](https://nsylove97.tistory.com/60)
   - [BNR 실습 05: 노아카이브 모드에서 Redo 없는 복구 & 컨트롤 파일 손상 복구 시나리오 (12~17)](https://nsylove97.tistory.com/61)
+  - [BNR 실습 06: 노아카이브 모드에서 컨트롤 파일·리두 로그 파일 손상 복구 시나리오 (18~24)](https://nsylove97.tistory.com/62)
 
 - 📧 **Email:** nsylove97@gmail.com
