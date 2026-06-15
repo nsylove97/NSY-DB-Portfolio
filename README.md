@@ -335,6 +335,14 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
 - 시나리오 24 — CURRENT redo log file 삭제 → ORA-01624로 즉시 CLEAR 불가 → shutdown/startup으로 로그 그룹 전환 후 ALTER DATABASE CLEAR LOGFILE GROUP → OPEN
 - ALTER DATABASE CLEAR LOGFILE GROUP — 로그 파일 재생성, RESETLOGS 없이 정상 OPEN 가능 (단, 손상 로그가 CURRENT/NEEDED인 경우 제한)
 
+**BNR 실습 07: 아카이브 로그 모드 전환 및 온라인 백업 기초**
+- archive log list / v$database 조회로 NOARCHIVELOG 모드 확인
+- log_archive_dest_1/2 이중화 경로 재설정 및 log_archive_format 변경
+- ARCHIVELOG 모드 전환 — shutdown immediate → MOUNT → ALTER DATABASE ARCHIVELOG → OPEN
+- ALTER SYSTEM SWITCH LOGFILE / ARCHIVE LOG CURRENT으로 아카이브 로그 생성 확인
+- Online Backup — ALTER DATABASE BEGIN BACKUP → cp 전체 백업 → END BACKUP → BACKUP CONTROLFILE TO
+- v$datafile / v$backup 조회로 백업 중 STATUS(NOT ACTIVE) 확인
+
 ## 🔗 Links
 - 📝 **기술 블로그:** https://nsylove97.tistory.com/
   - [Admin 실습 01: 인스턴스 기동 & 파라미터 파일](https://nsylove97.tistory.com/13)
@@ -363,5 +371,6 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
   - [BNR 실습 04: 노아카이브 모드에서 TX 중 Undo 손상, Temp 파일 손상, 전체 디스크 손상 복구 (9~11)](https://nsylove97.tistory.com/60)
   - [BNR 실습 05: 노아카이브 모드에서 Redo 없는 복구 & 컨트롤 파일 손상 복구 시나리오 (12~17)](https://nsylove97.tistory.com/61)
   - [BNR 실습 06: 노아카이브 모드에서 컨트롤 파일·리두 로그 파일 손상 복구 시나리오 (18~24)](https://nsylove97.tistory.com/62)
+  - [BNR 실습 07: 아카이브 로그 모드 전환 및 온라인 백업 기초](https://nsylove97.tistory.com/63)
 
 - 📧 **Email:** nsylove97@gmail.com
