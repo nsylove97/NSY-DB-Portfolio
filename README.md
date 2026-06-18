@@ -278,6 +278,19 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
 - RAC DB 생성 — dbca (Oracle Real Application Clusters database 선택, +DATA / +FRA)
 - 설치 결과 확인 — gv$instance 양 노드 OPEN · srvctl status database/asm/listener/scan_listener
 
+**RAC 실습 03: Clusterware 관리 — crsctl · srvctl · OCR · 로그 분석**
+- Oracle HAS 구성 — ohasd부터 인스턴스까지 기동 계층
+- CSS — Network/Disk Heartbeat 기반 멤버십 관리와 Eviction (misscount/disktimeout)
+- CRS / crsd — 클러스터 리소스 관리자, OHASD 하위 리소스 조회(-init)
+- crsctl 명령 체계 — check has/crs/cluster, stat res -t, stop/start cluster
+- srvctl 명령 체계 — status database/instance/listener/asm/scan_listener, stop/start instance·database
+- srvctl config database — AUTOMATIC / MANUAL 자동 시작 정책 비교 및 전환
+- OCR 정합성 검사 — ocrcheck(내용 검증) · cluvfy comp ocr(환경 설정 검증)
+- OCR 백업 이력 확인 및 수동 백업 — ocrconfig -showbackup / -manualbackup, 자동 백업 주기
+- ADRCI — show homes / set home / show alert로 Grid·DB 진단 로그 통합 조회
+- Grid 컴포넌트별 로그 위치 — Clusterware / ASM / DB / 리스너 / 설치 로그 경로 정리
+- OHAS / CSS / CRS 온라인 상태 확인 절차 — 계층별 단계적 점검 순서
+
 (./05_BNR)
 
 **BNR 실습 01: DB 구조 이해 및 아카이브 로그 환경 구성**
@@ -365,6 +378,7 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
   - [Data Guard 08: 심화 주제 정리편](https://nsylove97.tistory.com/53)
   - [RAC 실습 01: 개념 & 아키텍처 — Cluster · GCS/GES · Cache Fusion](https://nsylove97.tistory.com/54)
   - [RAC 실습 02: 2 Node RAC 구축 — VM 환경 준비 & Grid 설치](https://nsylove97.tistory.com/55)
+  - [RAC 실습 03: Clusterware 관리 — crsctl · srvctl · OCR · 로그 분석](https://nsylove97.tistory.com/64)
   - [BNR 실습 01: DB 구조 이해 및 아카이브 로그 환경 구성](https://nsylove97.tistory.com/57)
   - [BNR 실습 02: 노아카이브모드 Cold Backup & 복구 시나리오](https://nsylove97.tistory.com/58)
   - [BNR 실습 03: 노아카이브 모드에서 백업 없는 TS, System/Undo 데이터파일 손상 복구 시나리오 (3~8)](https://nsylove97.tistory.com/59)
