@@ -291,6 +291,21 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
 - Grid 컴포넌트별 로그 위치 — Clusterware / ASM / DB / 리스너 / 설치 로그 경로 정리
 - OHAS / CSS / CRS 온라인 상태 확인 절차 — 계층별 단계적 점검 순서
 
+**RAC 실습 04: RAC 파라미터 · SPFILE · Redo · UNDO 관리**
+- RAC SPFILE 구조 — 공용 SPFILE을 노드가 공유하는 방식
+- ALTER SYSTEM SET … SID 범위 제어 (전체 적용 / 특정 인스턴스 적용)
+- ALTER SYSTEM RESET — 파라미터 삭제
+- RAC 전용 파라미터 — CLUSTER_DATABASE · INSTANCE_NUMBER · THREAD
+- compatible 파라미터 — 양 노드 값 일치 필요성 및 단방향 변경
+- ASM_PREFERRED_READ_FAILURE_GROUPS — 노드별 가까운 Failure Group 우선 읽기
+- Redo Log Thread 구조 — 인스턴스마다 독립 Thread, 최소 2개 그룹
+- Thread 2 추가 및 활성화 (ADD LOGFILE THREAD → ENABLE PUBLIC THREAD)
+- UNDO 관리 — 인스턴스별 전용 UNDO TABLESPACE
+- UNDO_TABLESPACE 변경 및 이전 테이블스페이스 OFFLINE 전환
+- Quiesce RAC Database (ALTER SYSTEM QUIESCE RESTRICTED / UNQUIESCE)
+- Cross-instance Session Kill — KILL SESSION 'sid,serial#,@inst_id'
+- ASM Instance Recovery vs Crash Recovery 비교
+
 (./05_BNR)
 
 **BNR 실습 01: DB 구조 이해 및 아카이브 로그 환경 구성**
@@ -379,6 +394,7 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
   - [RAC 실습 01: 개념 & 아키텍처 — Cluster · GCS/GES · Cache Fusion](https://nsylove97.tistory.com/54)
   - [RAC 실습 02: 2 Node RAC 구축 — VM 환경 준비 & Grid 설치](https://nsylove97.tistory.com/55)
   - [RAC 실습 03: Clusterware 관리 — crsctl · srvctl · OCR · 로그 분석](https://nsylove97.tistory.com/64)
+  - [RAC 실습 04: RAC 파라미터 · SPFILE · Redo · UNDO 관리](https://nsylove97.tistory.com/65)
   - [BNR 실습 01: DB 구조 이해 및 아카이브 로그 환경 구성](https://nsylove97.tistory.com/57)
   - [BNR 실습 02: 노아카이브모드 Cold Backup & 복구 시나리오](https://nsylove97.tistory.com/58)
   - [BNR 실습 03: 노아카이브 모드에서 백업 없는 TS, System/Undo 데이터파일 손상 복구 시나리오 (3~8)](https://nsylove97.tistory.com/59)
