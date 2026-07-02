@@ -306,6 +306,23 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
 - Cross-instance Session Kill — KILL SESSION 'sid,serial#,@inst_id'
 - ASM Instance Recovery vs Crash Recovery 비교
 
+**RAC 실습 05: RMAN 백업 & Recovery — Catalog 서버 구축 · 인스턴스 장애 복구**
+- Recovery Catalog 서버 구축 — 별도 DB(2daydba)에 전용 테이블스페이스·사용자 생성 및 권한 부여
+- hosts 등록 및 Catalog TNS(RCATDB) 구성, tnsping 연결 확인
+- RMAN Catalog 연결 — CREATE CATALOG TABLESPACE로 카탈로그 스키마 생성
+- REGISTER DATABASE — DBID 기준 1회 등록 및 LIST INCARNATION 확인
+- RAC에서 RMAN 백업 실행 — 한 노드 백업이 공유 컨트롤파일·카탈로그로 타 노드에 즉시 반영
+- 멀티 채널 병렬 백업 — CONFIGURE DEVICE TYPE DISK PARALLELISM으로 노드별 채널 분산
+- Snapshot Controlfile 위치 확인(SHOW SNAPSHOT CONTROLFILE NAME) 및 공유 스토리지(+DATA) 경로로 변경
+- RMAN 백업 채널 — +FRA 경로 지정 및 db_recovery_file_dest_size 용량 상한 관리
+- 인스턴스 장애 시뮬레이션 — pmon 프로세스 kill -9로 장애 재현 및 생존 노드 서비스 지속 확인
+- srvctl status database로 Clusterware AUTOMATIC 정책 기반 자동 재기동 확인
+- RAC Instance Recovery 흐름 — GES(LMON) → GCS(LMS) → Lock 정리 → SMON Redo 적용
+- Alert Log 기반 Reconfiguration ~ Instance Recovery Complete 단계 분석
+- FAST_START_MTTR_TARGET — 기본값 0(비활성) 및 설정 후 v$instance_recovery / v$mttr_target_advice 예측 조회
+- RECOVERY_PARALLELISM — 병렬 복구 슬레이브 프로세스 수 설정 및 alert log SMON 메시지 확인
+- Asynchronous I/O(disk_asynch_io) 및 Buffer Cache 크기와 복구 속도의 트레이드오프
+
 (./05_BNR)
 
 **BNR 실습 01: DB 구조 이해 및 아카이브 로그 환경 구성**
@@ -395,6 +412,7 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
   - [RAC 실습 02: 2 Node RAC 구축 — VM 환경 준비 & Grid 설치](https://nsylove97.tistory.com/55)
   - [RAC 실습 03: Clusterware 관리 — crsctl · srvctl · OCR · 로그 분석](https://nsylove97.tistory.com/64)
   - [RAC 실습 04: RAC 파라미터 · SPFILE · Redo · UNDO 관리](https://nsylove97.tistory.com/65)
+  - [RAC 실습 05: RMAN 백업 & Recovery — Catalog 서버 구축 · 인스턴스 장애 복구](https://nsylove97.tistory.com/67)
   - [BNR 실습 01: DB 구조 이해 및 아카이브 로그 환경 구성](https://nsylove97.tistory.com/57)
   - [BNR 실습 02: 노아카이브모드 Cold Backup & 복구 시나리오](https://nsylove97.tistory.com/58)
   - [BNR 실습 03: 노아카이브 모드에서 백업 없는 TS, System/Undo 데이터파일 손상 복구 시나리오 (3~8)](https://nsylove97.tistory.com/59)
