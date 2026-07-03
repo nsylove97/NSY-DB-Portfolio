@@ -388,6 +388,14 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
 - Online Backup — ALTER DATABASE BEGIN BACKUP → cp 전체 백업 → END BACKUP → BACKUP CONTROLFILE TO
 - v$datafile / v$backup 조회로 백업 중 STATUS(NOT ACTIVE) 확인
 
+**BNR 실습 08: 아카이브 로그 모드에서 데이터파일 손상 복구 시나리오 (2~4)**
+- 시나리오 2-1 — 운영 중 offline 데이터파일 손상 (리두 적용형) → ALTER DATABASE DATAFILE OFFLINE → OPEN → 백업 복원 → RECOVER TABLESPACE → ONLINE
+- 시나리오 2-2 — 운영 중 offline 데이터파일 손상 (자동 리두 적용형) → RECOVER TABLESPACE 중 ORA-00279 시퀀스별 아카이브 로그 AUTO 자동 적용
+- 시나리오 3 — 오프라인 시 테이블스페이스 손상 복구 → MOUNT에서 DATAFILE OFFLINE → OPEN → 백업 복원 → RECOVER DATAFILE → ONLINE
+- 시나리오 4-1 — 정상 종료 후 다중 데이터파일 손상 복구 → 데이터파일별 RECOVER DATAFILE 개별 수행 → ONLINE
+- 시나리오 4-2 — 정상 종료 후 SYSTEM 데이터파일 손상 복구 → SYSTEM offline 불가 특성으로 MOUNT 상태 유지 → restore → RECOVER DATAFILE → OPEN
+- v$recover_file / v$datafile / v$tablespace 조회로 손상 파일 및 복구 상태(OFFLINE/ONLINE/RECOVER/SYSTEM) 확인
+
 ## 🔗 Links
 - 📝 **기술 블로그:** https://nsylove97.tistory.com/
   - [Admin 실습 01: 인스턴스 기동 & 파라미터 파일](https://nsylove97.tistory.com/13)
@@ -420,5 +428,6 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
   - [BNR 실습 05: 노아카이브 모드에서 Redo 없는 복구 & 컨트롤 파일 손상 복구 시나리오 (12~17)](https://nsylove97.tistory.com/61)
   - [BNR 실습 06: 노아카이브 모드에서 컨트롤 파일·리두 로그 파일 손상 복구 시나리오 (18~24)](https://nsylove97.tistory.com/62)
   - [BNR 실습 07: 아카이브 로그 모드 전환 및 온라인 백업 기초](https://nsylove97.tistory.com/63)
+  - [BNR 실습 08: 아카이브 로그 모드에서 데이터파일 손상 복구 시나리오 (2~4)](https://nsylove97.tistory.com/68)
 
 - 📧 **Email:** nsylove97@gmail.com
