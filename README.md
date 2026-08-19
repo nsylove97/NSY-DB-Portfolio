@@ -323,6 +323,21 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
 - RECOVERY_PARALLELISM — 병렬 복구 슬레이브 프로세스 수 설정 및 alert log SMON 메시지 확인
 - Asynchronous I/O(disk_asynch_io) 및 Buffer Cache 크기와 복구 속도의 트레이드오프
 
+**RAC 실습 06: Services & Resource Manager — 부하 분산 · HA · 자원 제어**
+- Traditional vs Grid Workload Dispatching 비교 — Service Name 기반 접속으로 인스턴스 직접 지정 없이 부하 분산·장애 조치 위임
+- RAC Service 개념 — 세션 묶음 · 자동 분배 · 자동 이동 (srvctl add/start service)
+- Preferred / Available 인스턴스 역할 구분
+- Service 구성 방식 3가지 — Active/Spare · Active/Symmetric · Active/Asymmetric
+- Service Attributes — Network Name · Load Balancing Goal · Failover Type · Failover Method (dba_services)
+- Failover Type — NONE · SESSION · SELECT / SHORT · LONG 재시도 주기
+- CTF 실습 — 인스턴스 중단 후 자동 재연결 확인 (접속 시점 라우팅)
+- TAF 실습 — 진행 중이던 SELECT 커서 재개 (FAILOVER_MODE, v$session FAILED_OVER)
+- TAC 실습 — COMMIT 성공 여부 기억, DML/트랜잭션 구간 Replay (FAILOVER_TYPE = TRANSACTION)
+- srvctl relocate service 명령 활용 — 계획된 부하 이동
+- Service Goodness — MMNL 알고리즘과 gv$servicemetric 기반 인스턴스별 부하 확인
+- Resource Manager — Consumer Group 생성 및 Plan Directive로 CPU 비율 통제 (DBMS_RESOURCE_MANAGER)
+- Pending Area — CREATE → VALIDATE → SUBMIT 3단계 설정 반영 절차
+
 (./05_BNR)
 
 **BNR 실습 01: DB 구조 이해 및 아카이브 로그 환경 구성**
@@ -421,6 +436,7 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
   - [RAC 실습 03: Clusterware 관리 — crsctl · srvctl · OCR · 로그 분석](https://nsylove97.tistory.com/64)
   - [RAC 실습 04: RAC 파라미터 · SPFILE · Redo · UNDO 관리](https://nsylove97.tistory.com/65)
   - [RAC 실습 05: RMAN 백업 & Recovery — Catalog 서버 구축 · 인스턴스 장애 복구](https://nsylove97.tistory.com/67)
+  - [RAC 실습 06: Services & Resource Manager — 부하 분산 · HA · 자원 제어](https://nsylove97.tistory.com/129)
   - [BNR 실습 01: DB 구조 이해 및 아카이브 로그 환경 구성](https://nsylove97.tistory.com/57)
   - [BNR 실습 02: 노아카이브모드 Cold Backup & 복구 시나리오](https://nsylove97.tistory.com/58)
   - [BNR 실습 03: 노아카이브 모드에서 백업 없는 TS, System/Undo 데이터파일 손상 복구 시나리오 (3~8)](https://nsylove97.tistory.com/59)
