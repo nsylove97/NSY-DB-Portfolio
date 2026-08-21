@@ -3,9 +3,10 @@
 오라클 DB 인스턴스 기동 원리부터 스토리지 관리, 수동 DB 생성, 네트워크 구성,
 사용자 보안 관리, Lock & Undo & 감사(Audit), 성능 모니터링(AWR),
 ASM 설치 및 인스턴스 구조, 데이터 가드를 활용한 고가용성(HA) / 재해 복구(DR) 구성까지 CLI 환경에서 직접 실습한 포트폴리오입니다.
-현재 RAC는 아키텍처부터 2 Node 구축을 완료하고 Clusterware 관리, RMAN 백업,
-서비스 분산 설계, Cache Fusion 기반 성능 튜닝까지 단계별로 정리해 나가고 있습니다.
-Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확장 예정입니다.
+RAC는 2 Node 구축부터 Clusterware 관리, RMAN 백업, 서비스 분산 설계, 
+Cache Fusion 기반 성능 튜닝까지 정리했습니다.
+Backup & Recovery는 NOARCHIVELOG·ARCHIVELOG 모드 전반의 장애 복구 시나리오를 단계별로 실습·정리했으며,
+이후 SQL 튜닝까지 확장할 예정입니다.
 
 <br/>
 
@@ -338,6 +339,20 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
 - Resource Manager — Consumer Group 생성 및 Plan Directive로 CPU 비율 통제 (DBMS_RESOURCE_MANAGER)
 - Pending Area — CREATE → VALIDATE → SUBMIT 3단계 설정 반영 절차
 
+**RAC 실습 07: RAC 성능 튜닝 — Cache Fusion · Wait Event · Hot Block 분석**
+- RAC 튜닝 원칙 — 단일 인스턴스 튜닝 선행 후 RAC 전용 튜닝 진행
+- CPU Time vs Wait Time — v$sess_time_model 기반 튜닝 방향 판단
+- RAC 추가 병목 요인 4가지 — Interconnect · Instance Recovery · Hot Block · 직렬화
+- RAC 전용 진단 도구 — AWR · ADDM · GV$ 뷰 · EM RAC Pages
+- Cache Fusion 블록 전송 비용 — gc cr block receive time 기반 평균 응답 시간 산출 및 10ms 기준선
+- Cluster Wait Class 주요 Wait Event 조회 (gv$system_event)
+- Placeholder Event(gc cr request 등) → 실제 GC 이벤트 전환 개념
+- 2-way / 3-way Block Request 흐름 비교 및 Object Affinity
+- GC Buffer Busy · GC Current Grant Busy · GC Block Congested 원인 구분
+- Enqueue(Lock) 병목 — GES 기반 TX · TM 대기 통계 (gv$enqueue_statistics)
+- Index Block Contention — 순차 증가 인덱스 Hot Block 및 Sequence CACHE·NOORDER 설계
+- UNDO 블록 인터커넥트 이동과 짧은 트랜잭션 설계
+- HWM 병목과 ASSM
 (./05_BNR)
 
 **BNR 실습 01: DB 구조 이해 및 아카이브 로그 환경 구성**
@@ -437,6 +452,7 @@ Backup & Recovery 실습도 함께 진행 중이며, 이후 SQL 튜닝까지 확
   - [RAC 실습 04: RAC 파라미터 · SPFILE · Redo · UNDO 관리](https://nsylove97.tistory.com/65)
   - [RAC 실습 05: RMAN 백업 & Recovery — Catalog 서버 구축 · 인스턴스 장애 복구](https://nsylove97.tistory.com/67)
   - [RAC 실습 06: Services & Resource Manager — 부하 분산 · HA · 자원 제어](https://nsylove97.tistory.com/129)
+  - [RAC 실습 07: RAC 성능 튜닝 — Cache Fusion · Wait Event · Hot Block 분석](https://nsylove97.tistory.com/132)
   - [BNR 실습 01: DB 구조 이해 및 아카이브 로그 환경 구성](https://nsylove97.tistory.com/57)
   - [BNR 실습 02: 노아카이브모드 Cold Backup & 복구 시나리오](https://nsylove97.tistory.com/58)
   - [BNR 실습 03: 노아카이브 모드에서 백업 없는 TS, System/Undo 데이터파일 손상 복구 시나리오 (3~8)](https://nsylove97.tistory.com/59)
